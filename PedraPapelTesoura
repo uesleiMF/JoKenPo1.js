@@ -1,0 +1,84 @@
+const prompt = require('prompt-sync')();
+
+console.log('JOGO DE JOKENPO');
+console.log()
+
+console.log('JOGADOR VS COMPUTADOR');
+console.log()
+
+var computador = 0;
+var jogador = 0;
+let answer = 'S';
+ 
+function resetcounter(){
+    computador = 0;
+    jogador = 0;
+}
+
+while ( answer === 'S' ) {
+    resetcounter();
+
+    let turn = prompt('Quantidades de rodadas  digita aqui: ');
+
+        do {
+      
+        var jogar = prompt('pedra, papel ou tesoura?');
+
+      
+        let poList = ['pedra', 'papel', 'tesoura'];
+        let list = poList.length;
+        let random = Math.floor(Math.random() * list);
+        var choice = poList[random];
+      
+
+        if ( jogar === 'pedra' && choice === 'pedra'){
+        console.log(`pedra  ${poList[0]} - Empatou`);
+        } else if ( jogar === 'pedra' && choice === 'papel'){
+        console.log(`pedra  ${poList[1]} - Ganhou`);
+        computador = ++computador;
+
+        } else if  ( jogar === 'pedra' && choice === 'tesoura'){
+        console.log(` pedra  ${poList[2]} - Perdeu`);
+        jogador = ++jogador;
+          
+
+        } else if ( jogar === 'papel' && choice === 'pedra'){
+        console.log(`papel  ${poList[0]} - Perdeu`);
+        jogador = ++jogador;
+
+        } else if ( jogar === 'papel' && choice === 'papel'){
+        console.log(` papel ${poList[1]} - Empatou`);
+        } else if  ( jogar === 'papel' && choice === 'tesoura'){
+        console.log(` papel  ${poList[2]} - Ganhou`);
+        computador= ++computador;
+        
+        
+        } else if ( jogar === 'tesoura' && choice === 'pedra'){
+        console.log(`tesoura  ${poList[0]} - Ganhou`);
+        computador = ++computador;
+        } else if ( jogar === 'tesoura' && choice === 'papel'){
+        console.log(`tesoura ${poList[1]} - Perdeu`);
+        jogador = ++jogador;
+        } else if  ( jogar === 'tesoura' && choice === 'tesoura'){
+        console.log(`tesoura ${poList[2]} - Empatou`);
+        }
+
+        
+    turn = turn - 1;
+    } while (turn > 0);
+ 
+
+    if ( jogador === computador){
+        console.log('\EMPATOU');
+    } else if ( computador > jogador ) {
+
+        console.log(`\Computador ganhou o jogo por ${computador} x ${jogador}.`)
+    } else {
+        
+        console.log (`\Jogador ganhou por ${jogador} x ${computador}. `)
+    }
+
+        answer = prompt('Jogar novamente? [S / N] ');
+} if (answer = 'N') {
+    console.log('Até a proxima')
+}
